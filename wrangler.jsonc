@@ -1,0 +1,14 @@
+{
+  // Explicit Wrangler config. Its presence stops `wrangler deploy` from running
+  // framework auto-configuration, which is what demanded Vite >= 6.0.0.
+  // This project is a static SPA: Vite builds to ./dist and Workers serves it.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "texpro-inventory-suite",
+  "compatibility_date": "2026-09-19",
+  "assets": {
+    "directory": "./dist/",
+    // Serve index.html for any path that isn't a real file, so react-router
+    // deep links (/orders, /invoices/123) work on refresh.
+    "not_found_handling": "single-page-application"
+  }
+}
